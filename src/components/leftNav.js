@@ -13,9 +13,7 @@ margin-top: 30px;
 const StyledNavContainer = styled.div`
 grid-column: 1;
  width: 100%;
-//  margin-top:30px;
  margin-right: 10px;
-//  height: 640px;
 `
 
 const StyledLogo = styled.div`

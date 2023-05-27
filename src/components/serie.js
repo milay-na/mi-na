@@ -8,12 +8,7 @@ display: flex;
 flex-direction: column;
 grid-column-start: 2;
 grid-column-end: span 3;
-// flex-wrap: wrap;
 align-items: center;
-/* background-position: cover; */
-/* &:last-child {align-self: flex-start;} */
-// width: 100%;
-// align-content: space-around;
 `
 
 
