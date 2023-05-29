@@ -39,7 +39,7 @@ const Nav = ({className}) => {
   const sevenClick = useCallback(() => history.push("/sept"), [history])
   const springClick = useCallback(() => history.push("/spring"), [history])
 
-  const [showSubMenu, setshowSubMenu] = useState("false");
+  const [showSubMenu, setshowSubMenu] = useState(false);
   const toggleSubMenu = () => setshowSubMenu(!showSubMenu);
 
 
