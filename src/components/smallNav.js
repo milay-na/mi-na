@@ -4,19 +4,15 @@ import { useHistory } from "react-router-dom";
 import { mediaMinMax, BREAKPOINT_XS, BREAKPOINT_SM, StyledLogo } from '../utils/style';
 
 
-
-
-
-
-const StyledNav = styled.div`
-margin-top: 30px;
-`
 const StyledNavContainer = styled.div`
 grid-column: 1;
  width: 100%;
  margin-right: 10px;
 `
 
+const StyledNav = styled.div`
+margin-top: 30px;
+`
 
 const StyledListItem = styled.p`
 ${mediaMinMax({
@@ -42,7 +38,7 @@ line-height: 20px;
 const StyledSubNav = styled.p`
 margin-left: 10px;`
 
-const LeftNav = () => {
+const SmallNav = () => {
     let history = useHistory();
 
   const homeClick = useCallback(() => history.push("/home"), [history])
@@ -80,4 +76,4 @@ const LeftNav = () => {
     )
   }
   
-  export default LeftNav
+  export default SmallNav

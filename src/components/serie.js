@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { mediaMinMax, BREAKPOINT_XS, BREAKPOINT_SM } from '../utils/style'
 
 
 
@@ -16,7 +17,22 @@ const StyledImageContainer = styled.div`
  ${({ backgroundimage /*, position */}) => `
   background-image: url('${backgroundimage}');
   background-size: contain;
+  ${mediaMinMax({
+    min: BREAKPOINT_XS,
+    max: BREAKPOINT_SM - 1,
+    style: `
+    margin: 20px;
+    `
+  })
+}
+${mediaMinMax({
+  min: BREAKPOINT_XS,
+  max: BREAKPOINT_SM - 1,
+  style: `
   margin: 2px;
+  `
+})
+}
   width: 90%;
   height: auto;
 `}

@@ -6,7 +6,7 @@ import {BrowserRouter as Router, Route, Switch}  from 'react-router-dom';
 
 import { map } from 'lodash/fp';
 import routes  from './routes';
-
+import NavContainer from './components/navContainer';
 
 
 
@@ -16,7 +16,8 @@ function App() {
   return (
     <Router>
 <StyledMargin>
-  <LeftNav> </LeftNav>
+  {/* <LeftNav> </LeftNav> */}
+  <NavContainer></NavContainer>
 <Switch>
               {map(
                 route => (
