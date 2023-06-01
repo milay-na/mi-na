@@ -1,5 +1,4 @@
 import './App.css';
-import LeftNav from './components/leftNav';
 import { StyledMargin } from './utils/style';
 import {BrowserRouter as Router, Route, Switch}  from 'react-router-dom';
 
@@ -16,7 +15,6 @@ function App() {
   return (
     <Router>
 <StyledMargin>
-  {/* <LeftNav> </LeftNav> */}
   <NavContainer></NavContainer>
 <Switch>
               {map(

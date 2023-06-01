@@ -1,11 +1,32 @@
 import React , { useCallback, useState}from 'react'
 import styled from 'styled-components'
 import { useHistory } from "react-router-dom";
-import { mediaMinMax, BREAKPOINT_XS, BREAKPOINT_SM} from '../utils/style';
+import { mediaMinMax, BREAKPOINT_XS, BREAKPOINT_SM, BREAKPOINT_LG, StyledLogo} from '../utils/style';
 
 
 const StyledContainer = styled.div`
-margin-top: 30px;
+${mediaMinMax({
+  min: BREAKPOINT_SM,
+  max: BREAKPOINT_LG - 1,
+  style: `
+  padding-top: 30px;
+  `
+})
+}
+position:sticky;
+top: 0;
+${mediaMinMax({
+    min: BREAKPOINT_XS,
+    max: BREAKPOINT_SM - 1,
+    style: `
+    margin-top: 30px;
+   position: fixed;
+   background-color:white;
+   width: 100%;
+   bottom: 0;
+    `
+  })
+  }
 `
 
 const StyledListItem = styled.p`
@@ -19,15 +40,71 @@ line-height: 20px;
     color: #AB1879;
     cursor:pointer;
   }
+  ${mediaMinMax({
+    min: BREAKPOINT_XS,
+    max: BREAKPOINT_SM - 1,
+    style: `
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    float:left;
+    background_color: white;
+    z-index: 100;
+    `
+  })
+  }
+  ${mediaMinMax({
+    min: BREAKPOINT_SM,
+    max: BREAKPOINT_LG - 1,
+    style: `
+    margin: 12px;
+    `
+  })
+  }
 `
 
-const StyledSubNav = styled.p`
-margin-left: 10px;
+const StyledSubNav = styled.div`
+${mediaMinMax({
+    min: BREAKPOINT_SM,
+    max: BREAKPOINT_LG - 1,
+    style: `
+    margin-left: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    `
+  })
+  }
+`
+const StyledLogoSM = styled(StyledLogo)`
+${mediaMinMax({
+    min: BREAKPOINT_XS,
+    max: BREAKPOINT_SM - 1,
+    style: `
+  display: none;
+    `
+  })
+  }
+`
+const StyledLined = styled.hr`
+border: 1px solid black;
+color: black;
+width: 15%;
+${mediaMinMax({
+  min: BREAKPOINT_SM,
+  max: BREAKPOINT_LG - 1,
+  style: `
+display: none;
+  `
+})
+}
+`
+
+const StyledSubListItem = styled(StyledListItem)`
+margin: 0 0 10px 0;
 `
 
 
-
-const Nav = ({className}) => {
+const Nav = ({className, menuOpen, toggleMenu}) => {
     let history = useHistory();
 
   const homeClick = useCallback(() => history.push("/home"), [history])
@@ -42,23 +119,30 @@ const Nav = ({className}) => {
   const [showSubMenu, setshowSubMenu] = useState(false);
   const toggleSubMenu = () => setshowSubMenu(!showSubMenu);
 
+  const outOnClick = () =>  {
+    outClick();
+    toggleMenu();
+  }
 
 
-  
+  console.log('menuOpen', menuOpen)
     return (
      <>
             <StyledContainer className={className} > 
+            <StyledLogoSM> Mi & Na</StyledLogoSM>
                 <StyledListItem  onClick={homeClick} >Home</StyledListItem>
+                {showSubMenu && <StyledLined></StyledLined>}
                 <StyledListItem  onClick={toggleSubMenu}>Photography</StyledListItem>
                 
                {showSubMenu &&  <StyledSubNav>
-                    <StyledListItem  onClick={outClick} >Out</StyledListItem>
-                    <StyledListItem  onClick={nightLifeClick} >Night life</StyledListItem>
-                    <StyledListItem  onClick={sevenClick} >Le Sept</StyledListItem>
-                    <StyledListItem  onClick={neitherClick} > neither here nor there</StyledListItem>
-                    <StyledListItem  onClick={springClick} > Spring</StyledListItem>
+                    <StyledSubListItem onClick={outOnClick} >Out</StyledSubListItem>
+                    {/* <StyledListItem  onClick={outClick} >Out</StyledListItem> */}
+                    <StyledSubListItem onClick={nightLifeClick} >Night life</StyledSubListItem>
+                    <StyledSubListItem onClick={sevenClick} >Le Sept</StyledSubListItem>
+                    <StyledSubListItem onClick={neitherClick} > neither here nor there</StyledSubListItem>
+                    <StyledSubListItem  onClick={springClick} > Spring</StyledSubListItem>
                 </StyledSubNav>}
-
+                {showSubMenu && <StyledLined></StyledLined>}
                 <StyledListItem onClick={aboutClick}>About</StyledListItem>
                 <StyledListItem onClick={contactClick}>Contact</StyledListItem>
             </StyledContainer>

@@ -12,7 +12,6 @@ ${mediaMinMax({
   `
 })
 }
-background-color:grey;
 `
 
 const StyledNavSM = styled(Nav)`
@@ -25,7 +24,6 @@ ${mediaMinMax({
   `
 })
 }
-background-color: blue;
 
 `
 
@@ -34,12 +32,47 @@ const StyledNavContainer = styled.div`
 grid-column: 1;
  width: 100%;
  margin-right: 10px;
+ position:sticky;
+ top: 0;
+ background-color:white;
+ ${mediaMinMax({
+  min: BREAKPOINT_SM,
+  max: BREAKPOINT_LG - 1,
+  style: `
+ 
+  `
+})
+}
 `
 
-const StyledNavHeader = styled.p`
+const StyledNavHeader = styled.div`
 display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+height: 15%;
+${mediaMinMax({
+  min: BREAKPOINT_SM,
+  max: BREAKPOINT_LG - 1,
+  style: `
+  display:none;
+  `
+})
+}
+${mediaMinMax({
+  min: BREAKPOINT_XS,
+  max: BREAKPOINT_SM - 1,
+  style: `
+  position:sticky;
+  top:0;
+  margin-left: 20px;
+  margin-right: 20px;
+  `
+})
+}
+
 `
-const StyledMenu = styled.p`
+const StyledMenu = styled.div`
 ${mediaMinMax({
     min: BREAKPOINT_SM,
     max: BREAKPOINT_LG - 1,
@@ -54,8 +87,8 @@ ${mediaMinMax({
 const NavContainer = () => {
 
 
-  const [showMenu, setshowMenu] = useState(false);
-  const toggleMenu = () => setshowMenu(!showMenu);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const toggleMenu = () => setMenuOpen(!menuOpen);
 
   
     return (
@@ -66,7 +99,7 @@ const NavContainer = () => {
                     <StyledMenu onClick={toggleMenu}> Menu </StyledMenu>
                 </StyledNavHeader>
       <StyledNavSM></StyledNavSM>
-      {showMenu &&  <StyledNavXS></StyledNavXS>}
+      {menuOpen &&  <StyledNavXS toggleMenu={toggleMenu} menuOpen={menuOpen}></StyledNavXS>}
         
 
 

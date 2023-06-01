@@ -49,7 +49,7 @@ ${mediaMinMax({
     style: `
     display: flex; 
     flex-direction: column;
-    margin: 10px 10px 10px 10px;
+    // margin: 10px 10px 10px 10px;
     `
   })
 }

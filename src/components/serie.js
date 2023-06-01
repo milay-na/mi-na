@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { mediaMinMax, BREAKPOINT_XS, BREAKPOINT_SM } from '../utils/style'
+import { mediaMinMax, BREAKPOINT_XS, BREAKPOINT_SM, BREAKPOINT_LG } from '../utils/style'
 
 
 
@@ -21,15 +21,15 @@ const StyledImageContainer = styled.div`
     min: BREAKPOINT_XS,
     max: BREAKPOINT_SM - 1,
     style: `
-    margin: 20px;
+    margin: 5px;
     `
   })
 }
 ${mediaMinMax({
-  min: BREAKPOINT_XS,
-  max: BREAKPOINT_SM - 1,
+  min: BREAKPOINT_SM,
+  max: BREAKPOINT_LG - 1,
   style: `
-  margin: 2px;
+  margin: 3px;
   `
 })
 }
